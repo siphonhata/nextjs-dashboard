@@ -1,4 +1,4 @@
-import { Revenue } from '@/app/lib/definitions';
+
 import { lusitana } from '../fonts';
 import { generateYAxis } from '@/app/lib/utils';
 import { CalendarIcon } from '@heroicons/react/24/outline';
