@@ -32,6 +32,7 @@ export type State = {
 const CreateInvoice = FormSchema.omit({ id: true, date: true });
 
 export async function createInvoice(prevState: State, formData: FormData) {
+    
     const validatedFields = CreateInvoice.safeParse({
         customerId: formData.get('customerId'),
         amount: formData.get('amount'),
@@ -49,7 +50,6 @@ export async function createInvoice(prevState: State, formData: FormData) {
     const amountInCents = amount * 100;
     const date = new Date().toISOString().split('T')[0];
 
-
     try {
         await sql`
     INSERT INTO invoices (customer_id, amount, status, date)
@@ -62,7 +62,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
     revalidatePath('/dashboard/invoices');
     redirect('/dashboard/invoices');
 }
-
+ 
 // Update
 const UpdateInvoice = FormSchema.omit({ id: true, date: true });
 
